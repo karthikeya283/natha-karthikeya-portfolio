@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { @apply bg-ink font-sans text-zinc-400 antialiased; }
+h1, h2, h3 { @apply font-display text-white; }
+:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 3px; border-radius: 8px; }
+::selection { background: #8b5cf655; color: #fff; }
+
+@layer components {
+  .section { @apply mx-auto max-w-6xl px-5 py-24 sm:px-8; }
+  .card { @apply rounded-2xl border border-line bg-panel/80 transition-colors duration-300 hover:border-violet/50; }
+  .grad-text { @apply bg-gradient-to-r from-violet to-volt bg-clip-text text-transparent; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition duration-300; }
+  .btn-primary { @apply btn bg-gradient-to-r from-violet to-volt text-white shadow-[0_0_30px_-8px_#8b5cf6] hover:shadow-[0_0_40px_-4px_#3b82f6] hover:-translate-y-0.5; }
+  .btn-ghost { @apply btn border border-line bg-white/5 text-white hover:border-violet/60 hover:bg-white/10; }
+  .tag { @apply rounded-full border border-line bg-white/5 px-3 py-1 text-xs text-zinc-300; }
+  .field { @apply w-full rounded-xl border border-line bg-ink/60 px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:border-violet focus:outline-none; }
+}
+
+@keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(40px,-30px,0) scale(1.15); } }
+.orb { animation: drift 16s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .orb { animation: none; }
+}
